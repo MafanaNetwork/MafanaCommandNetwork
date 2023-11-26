@@ -1,0 +1,4 @@
+name: MafanaCommandNetwork
+version: '${project.version}'
+main: me.tahacheji.mafana.MafanaCommandNetwork
+api-version: 1.20
