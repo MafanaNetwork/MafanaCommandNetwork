@@ -5,6 +5,10 @@ import lombok.Getter;
 import me.tahacheji.mafana.commandExecutor.duration.Duration;
 import me.tahacheji.mafana.commandExecutor.node.ArgumentNode;
 import me.tahacheji.mafana.commandExecutor.paramter.impl.*;
+import me.tahacheji.mafana.data.OfflineProxyPlayer;
+import me.tahacheji.mafana.data.ProxyPlayer;
+import me.tahacheji.mafana.rankManager.Rank;
+import me.tahacheji.mafanatextnetwork.data.AllowedRecipient;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.OfflinePlayer;
@@ -70,6 +74,10 @@ public class ParamProcessor {
         processors.put(double.class, new DoubleProcessor());
         processors.put(boolean.class, new BooleanProcessor());
 
+        processors.put(AllowedRecipient.class, new RecipientProcessor());
+        processors.put(Rank.class, new RankProcessor());
+        processors.put(ProxyPlayer.class, new ProxyPlayerProcessor());
+        processors.put(OfflineProxyPlayer.class, new OfflinePlayerProcessor());
         processors.put(ChatColor.class, new ChatColorProcessor());
         processors.put(Player.class, new PlayerProcessor());
         processors.put(OfflinePlayer.class, new OfflinePlayerProcessor());

@@ -11,9 +11,4 @@ public final class MafanaCommandNetwork extends JavaPlugin {
     public void onEnable() {
         CommandHandler.registerCommands(AdminCommandExecutor.class, this);
     }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
-    }
 }

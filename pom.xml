@@ -90,7 +90,19 @@
         <dependency>
             <groupId>com.github.MaskedWasTaken</groupId>
             <artifactId>MafanaNetworkCommunicator</artifactId>
-            <version>1.1</version>
+            <version>1.8</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.MaskedWasTaken</groupId>
+            <artifactId>MafanaRankManager</artifactId>
+            <version>1.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.MaskedWasTaken</groupId>
+            <artifactId>MafanaTextNetwork</artifactId>
+            <version>1.7</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

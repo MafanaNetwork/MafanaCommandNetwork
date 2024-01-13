@@ -11,10 +11,8 @@ import org.bukkit.entity.Player;
 public class AdminCommandExecutor {
 
     @Command(names = "mcn preformPlayerCommand", permission = "mafana.admin", playerOnly = false)
-    public void preformPlayerCommand(CommandSender sender, @Param(name = "player") OfflinePlayer player, @Param(name = "command", concated = true) String command) {
+    public void preformPlayerCommand(CommandSender sender, @Param(name = "player") ProxyPlayer proxyPlayer, @Param(name = "command", concated = true) String command) {
         try {
-            ProxyPlayer proxyPlayer = MafanaNetworkCommunicator.getInstance().getNetworkCommunicatorDatabase().getProxyPlayer(player);
-
             if (proxyPlayer != null) {
                 proxyPlayer.preformCommand(command);
             } else {
@@ -36,8 +34,7 @@ public class AdminCommandExecutor {
         }
     }
     @Command(names = "mcn sendPlayerToServer", permission = "mafana.admin")
-    public void sendPlayerToServer(CommandSender sender, @Param(name = "target") OfflinePlayer target, @Param(name = "serverName") String serverName) {
-        ProxyPlayer proxyPlayer = MafanaNetworkCommunicator.getInstance().getNetworkCommunicatorDatabase().getProxyPlayer(target);
+    public void sendPlayerToServer(CommandSender sender, @Param(name = "target") ProxyPlayer proxyPlayer, @Param(name = "serverName") String serverName) {
         if(proxyPlayer != null) {
             proxyPlayer.connectPlayerToServer(serverName);
             sender.sendMessage(ChatColor.GREEN + "Sent player to server.");
