@@ -65,7 +65,7 @@ public class ParamProcessor {
         processors.put(AllowedRecipient.class, new RecipientProcessor());
         processors.put(Rank.class, new RankProcessor());
         processors.put(ProxyPlayer.class, new ProxyPlayerProcessor());
-        processors.put(OfflineProxyPlayer.class, new OfflinePlayerProcessor());
+        processors.put(OfflineProxyPlayer.class, new OfflineProxyPlayerProcessor());
         processors.put(ChatColor.class, new ChatColorProcessor());
         processors.put(Player.class, new PlayerProcessor());
         processors.put(OfflinePlayer.class, new OfflinePlayerProcessor());

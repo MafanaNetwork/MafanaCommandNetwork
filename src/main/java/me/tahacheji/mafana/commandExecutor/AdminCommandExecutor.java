@@ -2,6 +2,7 @@ package me.tahacheji.mafana.commandExecutor;
 
 import me.tahacheji.mafana.MafanaNetworkCommunicator;
 import me.tahacheji.mafana.commandExecutor.paramter.Param;
+import me.tahacheji.mafana.data.OfflineProxyPlayer;
 import me.tahacheji.mafana.data.ProxyPlayer;
 import me.tahacheji.mafana.data.Server;
 import org.bukkit.ChatColor;
