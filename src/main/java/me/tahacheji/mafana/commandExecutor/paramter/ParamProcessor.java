@@ -1,18 +1,18 @@
 package me.tahacheji.mafana.commandExecutor.paramter;
 
+import com.google.gson.reflect.TypeToken;
 import lombok.Data;
 import lombok.Getter;
+import me.tahacheji.mafana.commandExecutor.bukkit.Material;
 import me.tahacheji.mafana.commandExecutor.duration.Duration;
 import me.tahacheji.mafana.commandExecutor.node.ArgumentNode;
 import me.tahacheji.mafana.commandExecutor.paramter.impl.*;
 import me.tahacheji.mafana.data.OfflineProxyPlayer;
 import me.tahacheji.mafana.data.ProxyPlayer;
+import me.tahacheji.mafana.data.Server;
 import me.tahacheji.mafana.rankManager.Rank;
 import me.tahacheji.mafanatextnetwork.data.AllowedRecipient;
-import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -29,10 +29,6 @@ public class ParamProcessor {
     private final String supplied;
     private final CommandSender sender;
 
-    /**
-     * Processes the param into an object
-     * @return Processed Object
-     */
     public Object get() {
         if(!loaded) loadProcessors();
 
@@ -42,10 +38,6 @@ public class ParamProcessor {
         return processor.process(sender, supplied);
     }
 
-    /**
-     * Gets the tab completions for the param processor
-     * @return Tab Completions
-     */
     public List<String> getTabComplete() {
         if(!loaded) loadProcessors();
 
@@ -55,17 +47,10 @@ public class ParamProcessor {
         return processor.tabComplete(sender, supplied);
     }
 
-    /**
-     * Creates a new processor
-     * @param processor Processor
-     */
     public static void createProcessor(Processor<?> processor) {
         processors.put(processor.getType(), processor);
     }
 
-    /**
-     * Loads the processors
-     */
     public static void loadProcessors() {
         loaded = true;
 
@@ -74,6 +59,9 @@ public class ParamProcessor {
         processors.put(double.class, new DoubleProcessor());
         processors.put(boolean.class, new BooleanProcessor());
 
+        processors.put(Server.class, new ServerProcessor());
+        processors.put(Location.class, new LocationProcessor());
+        processors.put(Material.class, new MaterialProcessor());
         processors.put(AllowedRecipient.class, new RecipientProcessor());
         processors.put(Rank.class, new RankProcessor());
         processors.put(ProxyPlayer.class, new ProxyPlayerProcessor());

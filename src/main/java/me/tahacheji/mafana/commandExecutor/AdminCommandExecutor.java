@@ -3,10 +3,16 @@ package me.tahacheji.mafana.commandExecutor;
 import me.tahacheji.mafana.MafanaNetworkCommunicator;
 import me.tahacheji.mafana.commandExecutor.paramter.Param;
 import me.tahacheji.mafana.data.ProxyPlayer;
+import me.tahacheji.mafana.data.Server;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.checkerframework.checker.units.qual.C;
+
+import java.util.List;
 
 public class AdminCommandExecutor {
 
@@ -25,9 +31,9 @@ public class AdminCommandExecutor {
     }
 
     @Command(names = "mcn preformConsoleCommand", permission = "mafana.admin", playerOnly = false)
-    public void preformConsoleCommand(CommandSender sender, @Param(name = "command") String command, @Param(name = "server") String server) {
+    public void preformConsoleCommand(CommandSender sender, @Param(name = "command") String command, @Param(name = "server") Server server) {
         try {
-            MafanaNetworkCommunicator.getInstance().preformConsoleCommand(server, command);
+            MafanaNetworkCommunicator.getInstance().preformConsoleCommand(server.getServerID(), command);
         } catch (Exception e) {
             e.printStackTrace();
             sender.sendMessage(ChatColor.RED + "An error occurred while processing the command.");
