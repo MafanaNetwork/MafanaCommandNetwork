@@ -1,8 +1,8 @@
 package me.tahacheji.mafana.commandExecutor.paramter.impl;
 
+import me.tahacheji.mafana.MafanaCommandNetwork;
 import me.tahacheji.mafana.MafanaNetworkCommunicator;
 import me.tahacheji.mafana.commandExecutor.paramter.Processor;
-import me.tahacheji.mafana.data.OfflineProxyPlayer;
 import me.tahacheji.mafana.data.ProxyPlayer;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -25,7 +25,7 @@ public class ProxyPlayerProcessor extends Processor<ProxyPlayer> {
     }
 
     public List<String> tabComplete(CommandSender sender, String supplied) {
-        return MafanaNetworkCommunicator.getInstance().getNetworkCommunicatorDatabase().getAllConnectedPlayers()
+        return MafanaNetworkCommunicator.getInstance().getNetworkCommunicatorDatabase().getAllConnectedPlayerSync()
                 .stream()
                 .map(ProxyPlayer::getPlayerName)
                 .filter(Objects::nonNull)

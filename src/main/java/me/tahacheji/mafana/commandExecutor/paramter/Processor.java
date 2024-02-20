@@ -3,11 +3,13 @@ package me.tahacheji.mafana.commandExecutor.paramter;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.bukkit.command.CommandSender;
+import org.checkerframework.checker.units.qual.C;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @Getter
 public abstract class Processor<T> {
@@ -21,14 +23,8 @@ public abstract class Processor<T> {
         ParamProcessor.createProcessor(this);
     }
 
-    /**
-     * Process the object
-     */
     public abstract T process(CommandSender sender, String supplied);
 
-    /**
-     * Processes the tab completion
-     */
     public List<String> tabComplete(CommandSender sender, String supplied) {
         return new ArrayList<>();
     }

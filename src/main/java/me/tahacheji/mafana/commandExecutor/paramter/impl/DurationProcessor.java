@@ -28,12 +28,6 @@ public class DurationProcessor extends Processor<Duration> {
         return new Duration(supplied.toLowerCase(), duration);
     }
 
-    /**
-     * Get duration from string
-     *
-     * @param toParse String to parse
-     * @return Duration
-     */
     public static long parseDuration(String toParse) {
         try {
             toParse = toParse.toUpperCase();

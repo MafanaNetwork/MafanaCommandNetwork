@@ -1,5 +1,6 @@
 package me.tahacheji.mafana.commandExecutor.paramter.impl;
 
+import me.tahacheji.mafana.MafanaCommandNetwork;
 import me.tahacheji.mafana.MafanaNetworkCommunicator;
 import me.tahacheji.mafana.MafanaRankManager;
 import me.tahacheji.mafana.commandExecutor.paramter.Processor;
@@ -10,16 +11,18 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class RecipientProcessor extends Processor<AllowedRecipient> {
 
+
     public AllowedRecipient process(CommandSender sender, String supplied) {
         Player player = (Player) sender;
         AllowedRecipient allowedRecipient = null;
-        for(AllowedRecipient ar : MafanaTextNetwork.getInstance().getGamePlayerMessageData().getAllowedRecipients(player.getUniqueId())) {
+        for(AllowedRecipient ar : MafanaTextNetwork.getInstance().getGamePlayerMessageData().getAllowedRecipientsStringSync(player.getUniqueId())) {
             if(ar.getPlayerName().equalsIgnoreCase(supplied)) {
                 allowedRecipient = ar;
                 break;
@@ -36,7 +39,7 @@ public class RecipientProcessor extends Processor<AllowedRecipient> {
 
     public List<String> tabComplete(CommandSender sender, String supplied) {
         Player player = (Player) sender;
-        return MafanaTextNetwork.getInstance().getGamePlayerMessageData().getAllowedRecipients(player.getUniqueId())
+        return MafanaTextNetwork.getInstance().getGamePlayerMessageData().getAllowedRecipientsStringSync(player.getUniqueId())
                 .stream()
                 .map(AllowedRecipient::getPlayerName)
                 .filter(Objects::nonNull)

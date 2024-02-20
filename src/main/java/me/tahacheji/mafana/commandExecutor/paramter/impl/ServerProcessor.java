@@ -1,17 +1,17 @@
 package me.tahacheji.mafana.commandExecutor.paramter.impl;
 
+import me.tahacheji.mafana.MafanaCommandNetwork;
 import me.tahacheji.mafana.MafanaNetworkCommunicator;
 import me.tahacheji.mafana.commandExecutor.paramter.Processor;
 import me.tahacheji.mafana.data.Server;
-import me.tahacheji.mafanatextnetwork.MafanaTextNetwork;
-import me.tahacheji.mafanatextnetwork.data.AllowedRecipient;
+
 import org.bukkit.ChatColor;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 public class ServerProcessor extends Processor<Server> {
@@ -27,7 +27,7 @@ public class ServerProcessor extends Processor<Server> {
     }
 
     public List<String> tabComplete(CommandSender sender, String supplied) {
-        return MafanaNetworkCommunicator.getInstance().getNetworkCommunicatorDatabase().getAllServers()
+        return MafanaNetworkCommunicator.getInstance().getNetworkCommunicatorDatabase().getAllServerSync()
                 .stream()
                 .map(Server::getServerID)
                 .filter(Objects::nonNull)
