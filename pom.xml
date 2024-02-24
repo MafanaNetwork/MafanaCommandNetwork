@@ -90,19 +90,19 @@
         <dependency>
             <groupId>com.github.MafanaNetwork</groupId>
             <artifactId>MafanaNetworkCommunicator</artifactId>
-            <version>2.1</version>
+            <version>2.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.MafanaNetwork</groupId>
             <artifactId>MafanaRankManager</artifactId>
-            <version>1.5</version>
+            <version>1.6</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.MafanaNetwork</groupId>
             <artifactId>MafanaTextNetwork</artifactId>
-            <version>1.9</version>
+            <version>2.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
